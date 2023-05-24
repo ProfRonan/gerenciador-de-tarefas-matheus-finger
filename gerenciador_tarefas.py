@@ -45,7 +45,9 @@ def remove_tarefas(índices: tuple[int]):
     # TODO: coloque o código aqui para remover um tarefa na lista
     # Caso a tarefa não exista na lista, levante uma exceção do tipo ValueError
     # com a mensagem "Tarefa não existe"
-    if len(índices) >= 1:
+    if not lista_de_tarefas:
+        raise ValueError('Não há nada na lista para remover')
+    if índices:
         for i in range(len(índices)-1, -1, -1):
             lista_de_tarefas.pop(índices[i])
 
