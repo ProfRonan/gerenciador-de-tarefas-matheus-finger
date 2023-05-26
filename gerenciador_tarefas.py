@@ -49,6 +49,8 @@ def remove_tarefas(índices: tuple[int]):
         raise ValueError('Não há nada na lista para remover')
     if índices:
         for i in range(len(índices)-1, -1, -1):
+            if índices[i] >= len(lista_de_tarefas):
+                raise ValueError('Índice da tarefa inválido')
             if not lista_de_tarefas[i]:
                 raise ValueError('Não há tarefas com esse índice')
             lista_de_tarefas.pop(índices[i])
@@ -92,6 +94,8 @@ def ordena_por_prioridade():
             non_prior.append(i)
         else:
             prior.append(i)
+    prior = sorted(prior, key=lambda d: d['tarefa']) 
+    non_prior = sorted(non_prior, key=lambda d: d['tarefa']) 
     lista_de_tarefas = []
     for i in prior:
         lista_de_tarefas.append(i)
